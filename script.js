@@ -8,7 +8,43 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initOrderForm();
   initHeaderShadowOnScroll();
+  initScrollReveal();
 });
+
+/* ---------- Fade-and-slide-up on scroll ---------- */
+function initScrollReveal() {
+  const sections = document.querySelectorAll('section');
+  if (!sections.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  sections.forEach((section) => section.classList.add('reveal'));
+
+  // If reduced motion is preferred, or IntersectionObserver isn't supported,
+  // just show everything immediately instead of animating.
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    sections.forEach((section) => section.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      root: null,
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.1,
+    }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+}
 
 /* ---------- Mobile nav toggle ---------- */
 function initMobileNav() {
