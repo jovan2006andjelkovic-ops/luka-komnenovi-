@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poruči program — LUKA.K</title>
+<meta name="description" content="Popuni podatke i kreni sa svojim programom treninga, ishrane ili online mentorstva kod Luke Komnenovića.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Preskoči na sadržaj</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">LUKA<span>.</span>K</a>
+    <a href="index.html#kontakt" class="btn btn-primary btn-sm nav-cta">Imaš pitanje? Piši mi</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- PLAN SUMMARY -->
+  <section class="section" style="padding-bottom:40px;">
+    <div class="container">
+      <div class="order-summary">
+        <div class="order-hero-text">
+          <div class="kicker-row">
+            <span class="tag" style="background:var(--accent);color:var(--on-accent);border:none;font-weight:700;">Najviše traženo</span>
+          </div>
+          <h1 id="plan-title">Online mentorstvo</h1>
+          <p id="plan-desc">Kompletan paket: trening i ishrana zajedno, uz direktnu vezu sa mnom svaki dan u nedelji.</p>
+          <div class="unsure-row">
+            <span>Nisi siguran/na da li je ovo pravi izbor?</span>
+            <a href="index.html#cenovnik" class="link-underline">Pogledaj sve programe →</a>
+          </div>
+        </div>
+
+        <div class="order-plan-card">
+          <h3 id="plan-card-title">Online mentorstvo</h3>
+          <div class="price-row">
+            <span class="price" id="plan-price" style="color:var(--text-primary);">7.900</span>
+            <span class="price-period">RSD / mesečno</span>
+          </div>
+          <ul class="check-list" id="plan-features">
+            <li>Trening + plan ishrane</li>
+            <li>Nedeljni check-in</li>
+            <li>Direktna poruka svaki dan</li>
+            <li>Neograničene korekcije</li>
+          </ul>
+          <div class="guarantee-box">
+            <span>🛡</span>
+            <span>Ako posle 14 dana nisi zadovoljan/na planom, vraćam ti novac — bez pitanja.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider-fade"></div>
+
+  <!-- ORDER FORM -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="order-form-grid">
+        <div>
+          <span class="eyebrow">Poslednji korak</span>
+          <h2 class="section-title" style="font-size:36px;">Popuni podatke za start</h2>
+
+          <form id="order-form" novalidate style="margin-top:28px;">
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label for="o-name">Ime i prezime</label>
+                <input type="text" id="o-name" name="name" placeholder="Tvoje ime" required>
+              </div>
+              <div class="form-group">
+                <label for="o-contact">Email ili telefon</label>
+                <input type="text" id="o-contact" name="contact" placeholder="Gde da ti pošaljem plan?" required>
+              </div>
+            </div>
+
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label for="o-date">Željeni datum početka</label>
+                <input type="date" id="o-date" name="startDate" required>
+              </div>
+              <div class="form-group">
+                <label for="o-level">Nivo iskustva</label>
+                <select id="o-level" name="level" required>
+                  <option value="" disabled selected>Izaberi nivo</option>
+                  <option value="pocetnik">Početnik</option>
+                  <option value="srednji">Srednji nivo</option>
+                  <option value="napredni">Napredni</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom:20px;">
+              <label for="o-note">Napomena (povrede, alergije, cilj)</label>
+              <textarea id="o-note" name="note" placeholder="Sve što treba da znam pre nego što napravim plan."></textarea>
+            </div>
+
+            <fieldset>
+              <legend>Način plaćanja</legend>
+              <label class="radio-line">
+                <input type="radio" name="payment" value="racun" checked>
+                Uplata na račun
+              </label>
+              <label class="radio-line">
+                <input type="radio" name="payment" value="kartica">
+                Platna kartica
+              </label>
+              <label class="radio-line">
+                <input type="radio" name="payment" value="dogovor">
+                Dogovor putem poruke
+              </label>
+            </fieldset>
+
+            <div class="checkbox-row">
+              <input type="checkbox" id="o-consent" name="consent" required>
+              <label for="o-consent">Slažem se da me Luka kontaktira povodom ovog paketa i da podaci budu korišćeni isključivo za izradu mog plana.</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Potvrdi porudžbinu →</button>
+
+            <div class="form-footer-steps">
+              <div>
+                <div class="step-num">01</div>
+                <p>Potvrda odmah</p>
+              </div>
+              <div>
+                <div class="step-num">02</div>
+                <p>Plan za 48h</p>
+              </div>
+              <div>
+                <div class="step-num">03</div>
+                <p>Prvi check-in</p>
+              </div>
+            </div>
+          </form>
+
+          <div class="form-success" id="order-success">
+            <div class="check-circle">✓</div>
+            <h4>Porudžbina je primljena!</h4>
+            <p>Poslao/la sam ti potvrdu na uneti kontakt. Tvoj plan stiže u roku od 48h.</p>
+          </div>
+        </div>
+
+        <aside class="order-summary-card">
+          <h3>Pregled porudžbine</h3>
+          <div class="summary-line">
+            <span id="summary-plan-name">Online mentorstvo</span>
+            <span id="summary-plan-price">7.900 RSD</span>
+          </div>
+          <div class="summary-line">
+            <span>Trajanje</span>
+            <span>1 mesec, bez obaveze</span>
+          </div>
+          <div class="summary-line">
+            <span>Prvi plan stiže</span>
+            <span>u roku od 48h</span>
+          </div>
+          <div class="summary-line total">
+            <span>Ukupno danas</span>
+            <span id="summary-total">7.900 RSD</span>
+          </div>
+          <p class="summary-note">Naplata se vrši mesečno. Otkazuješ kad god želiš, bez skrivenih uslova.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center" style="margin:0 auto 56px;max-width:640px;">
+        <span class="eyebrow" style="justify-content:center;">Šta sledi</span>
+        <h2 class="section-title">Od potvrde do prvog treninga</h2>
+      </div>
+      <div class="next-steps-grid">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <h3>Potvrda odmah</h3>
+          <p>Dobijaš email/poruku da je porudžbina primljena, sa svim detaljima paketa.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <h3>Plan za 48h</h3>
+          <p>Pravim ti trening i/ili ishranu na osnovu onoga što si napisao/la u formi.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <h3>Prvi check-in</h3>
+          <p>Dogovaramo dan za prvi nedeljni check-in i kreće redovno praćenje napretka.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Pre nego što potvrdiš</span>
+        <h2 class="section-title">Pitanja oko porudžbine</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Kada tačno dobijam svoj plan?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Najkasnije 48h nakon potvrde porudžbine i uplate. Obično stiže i brže.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Mogu li da promenim paket kasnije?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Da, u bilo kom trenutku možeš preći na drugi paket — samo mi javi putem poruke.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Šta ako mi ne odgovara posle prvih nedelju dana?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Prvo pokušavamo korekciju plana. Ako ni to ne pomogne u prvih 14 dana, vraćam ti novac — bez pitanja.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Da li se plaćanje automatski obnavlja?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Naplata je mesečna. Obnavlja se automatski dok ne otkažeš — otkazivanje je moguće u svakom trenutku bez skrivenih uslova.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REASSURANCE -->
+  <section class="reassurance-block">
+    <div class="container">
+      <p>Nisi još 100% siguran/na? Popričajmo pre nego što bilo šta potvrdiš.</p>
+      <a href="index.html#kontakt" class="btn btn-secondary">Zakaži besplatnu konsultaciju →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <a href="index.html" class="logo">LUKA.K</a>
+    <span class="footer-meta">© 2026 Luka Komnenović · Online fitness mentorstvo · Kontakt</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Pre-fill plan details based on ?plan= query param
+  (function () {
+    const plans = {
+      trening: {
+        badge: 'Plan treninga',
+        title: 'Plan treninga',
+        desc: 'Program prilagođen tvom nivou, opremi i rasporedu — sa jasnom progresijom iz nedelje u nedelju.',
+        price: '3.500',
+        features: ['Program prilagođen opremi', 'Video uputstva za vežbe', '1 korekcija mesečno']
+      },
+      ishrana: {
+        badge: 'Plan ishrane',
+        title: 'Plan ishrane',
+        desc: 'Konkretan jelovnik usklađen sa tvojim ciljem — mršavljenje, definicija ili masa — bez gladovanja.',
+        price: '3.500',
+        features: ['Kalorijski i makro plan', 'Lista namirnica i zamena', '1 korekcija mesečno']
+      },
+      mentorstvo: {
+        badge: 'Najviše traženo',
+        title: 'Online mentorstvo',
+        desc: 'Kompletan paket: trening i ishrana zajedno, uz direktnu vezu sa mnom svaki dan u nedelji.',
+        price: '7.900',
+        features: ['Trening + plan ishrane', 'Nedeljni check-in', 'Direktna poruka svaki dan', 'Neograničene korekcije']
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get('plan');
+    const plan = plans[key] || plans.mentorstvo;
+
+    document.getElementById('plan-title').textContent = plan.title;
+    document.getElementById('plan-desc').textContent = plan.desc;
+    document.getElementById('plan-card-title').textContent = plan.title;
+    document.getElementById('plan-price').textContent = plan.price;
+    document.getElementById('summary-plan-name').textContent = plan.title;
+    document.getElementById('summary-plan-price').textContent = plan.price + ' RSD';
+    document.getElementById('summary-total').textContent = plan.price + ' RSD';
+
+    const featuresList = document.getElementById('plan-features');
+    featuresList.innerHTML = '';
+    plan.features.forEach((f) => {
+      const li = document.createElement('li');
+      li.textContent = f;
+      featuresList.appendChild(li);
+    });
+
+    const badge = document.querySelector('.kicker-row .tag');
+    if (badge) badge.textContent = plan.badge;
+  })();
+</script>
+</body>
+</html>
