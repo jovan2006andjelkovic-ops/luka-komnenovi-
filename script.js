@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initOrderForm();
   initHeaderShadowOnScroll();
   initScrollReveal();
+  initBeforeAfterSliders();
 });
 
 /* ---------- Fade-and-slide-up on scroll ---------- */
@@ -129,6 +130,91 @@ function initOrderForm() {
     if (success) success.classList.add('show');
     if (success) success.setAttribute('tabindex', '-1');
     if (success) success.focus();
+  });
+}
+
+/* ---------- Before/after transformation sliders ---------- */
+function initBeforeAfterSliders() {
+  const sliders = document.querySelectorAll('[data-ba-slider]');
+  if (!sliders.length) return;
+
+  sliders.forEach((slider) => {
+    const beforeImage = slider.querySelector('.ba-before');
+    const divider = slider.querySelector('.ba-divider');
+    const handle = slider.querySelector('.ba-handle');
+    if (!beforeImage || !divider || !handle) return;
+
+    let dragging = false;
+
+    function setPosition(percent) {
+      const clamped = Math.min(100, Math.max(0, percent));
+      beforeImage.style.clipPath = 'inset(0 ' + (100 - clamped) + '% 0 0)';
+      divider.style.left = clamped + '%';
+      handle.setAttribute('aria-valuenow', String(Math.round(clamped)));
+    }
+
+    function percentFromClientX(clientX) {
+      const rect = slider.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+
+    function startDrag(clientX, pointerId) {
+      dragging = true;
+      slider.classList.add('is-dragging');
+      if (pointerId !== undefined && handle.setPointerCapture) {
+        try {
+          handle.setPointerCapture(pointerId);
+        } catch (err) {
+          /* ignore unsupported capture */
+        }
+      }
+      setPosition(percentFromClientX(clientX));
+    }
+
+    function moveDrag(clientX) {
+      if (!dragging) return;
+      setPosition(percentFromClientX(clientX));
+    }
+
+    function endDrag() {
+      dragging = false;
+      slider.classList.remove('is-dragging');
+    }
+
+    // Pointer Events cover mouse, touch, and pen in one API.
+    handle.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      startDrag(e.clientX, e.pointerId);
+    });
+
+    slider.addEventListener('pointerdown', (e) => {
+      if (e.target === handle || handle.contains(e.target)) return;
+      startDrag(e.clientX);
+    });
+
+    window.addEventListener('pointermove', (e) => moveDrag(e.clientX));
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', endDrag);
+
+    // Keyboard accessibility: arrow keys move the divider by 5%.
+    handle.addEventListener('keydown', (e) => {
+      const current = parseFloat(divider.style.left) || 50;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+        setPosition(current - 5);
+        e.preventDefault();
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+        setPosition(current + 5);
+        e.preventDefault();
+      } else if (e.key === 'Home') {
+        setPosition(0);
+        e.preventDefault();
+      } else if (e.key === 'End') {
+        setPosition(100);
+        e.preventDefault();
+      }
+    });
+
+    setPosition(50);
   });
 }
 
