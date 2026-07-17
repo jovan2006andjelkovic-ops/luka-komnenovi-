@@ -912,6 +912,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   display: block;
   pointer-events: none;
   -webkit-user-drag: none;
@@ -1014,6 +1015,23 @@ button {
 
 .ba-slider.is-dragging .ba-handle {
   transform: translate(-50%, -50%) scale(1.06);
+}
+
+@media (max-width: 640px) {
+  .ba-slider {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+@media (pointer: coarse) {
+  .ba-handle {
+    width: 48px;
+    height: 48px;
+  }
+  .ba-handle svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .transform-caption {
